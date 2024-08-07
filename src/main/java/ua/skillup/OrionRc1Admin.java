@@ -14,7 +14,7 @@ public class OrionRc1Admin {
 
     public void open() {
         driver.get("http://secret:tsdebug@rc1-orion.test.greatvaluevacations.com/admin");
-        driver.manage().addCookie(new Cookie.Builder("orion_rc_1_session", "eyJpdiI6IloxbFA0QW5DMmtYZFcwek9sOTIrT0E9PSIsInZhbHVlIjoiQzRGa1VsV2NFdkZtNEVCdmFFVDl5WFF5VFpPWGpyZElBaG9xTVdYeEZ5WUhGL0VlQzdOanpaSEw2dGFickRLb3Iva0FWclUxeWhWd3dvTkVQWVZUMmU1eTNqcUtqb1kwTXh3WFFqbDU0V0xwbzB5S1JRdW8yc1BtRXVsWUxUZmgiLCJtYWMiOiIzMDQ0YzJiMzZkMWM3OTg2NWQ1ZjU5YTM2ODQ4NDRmM2FhNTIwMzliMzE3ZDg0NjhkMTU5MDZmYTBjYzEzNzMxIiwidGFnIjoiIn0%3D").build());
+        driver.manage().addCookie(new Cookie.Builder("orion_rc_1_session", "eyJpdiI6InpoVEFLVUNWVjJ2cXZ5MDFVUGxzTFE9PSIsInZhbHVlIjoieVZmUzJRcmcxbVh0Rjc4Z0VKWmdpaEM3UncrZ2RjbHZLWTlFblBOM1RJd2dvOVJMdWhnOCswMFhleVg2YVBZdVJPaXhMMUcwYUE3UUxCR2xqZzlZWDNQdHJQNDk1aVMvbW5lYWNuS20wOEYzcVJTdWYxTE1hdWxNTkwrVzRtazgiLCJtYWMiOiJjY2FhZjZmNzQ2ODljODg1YjIzNjUyMDAxNmEzYWY1M2I2NGZhMjc1YWE2MmE0NzQ5ZDkwODJhZDcxNGI4M2VlIiwidGFnIjoiIn0%3D").build());
         driver.get("http://secret:tsdebug@rc1-orion.test.greatvaluevacations.com/admin");
     }
 }

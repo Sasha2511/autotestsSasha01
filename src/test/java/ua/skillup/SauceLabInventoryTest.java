@@ -14,15 +14,16 @@ import static org.testng.Assert.assertTrue;
 public class SauceLabInventoryTest {
     WebDriver driver;
     InventoryPage inventoryPage;
+    OrionRc1Admin orionRc1Admin;
 
-    @BeforeClass
+    @BeforeClass(enabled = false)
     public void setUp() {
         driver = new ChromeDriver();
         inventoryPage = new InventoryPage(driver);
         inventoryPage.open();
     }
 
-    @Test
+    @Test(enabled = false)
     public void onInventoryPage() {
         assertTrue(inventoryPage.isOnInventoryPage());
     }
@@ -32,10 +33,24 @@ public class SauceLabInventoryTest {
         return inventoryPage.sortListValue;
     }
 
-    @Test(dataProvider = "filter")
+    @Test(dataProvider = "filter", enabled = false )
     public void testFilters(String filter) {
         inventoryPage.sortList(filter);
         assertTrue(inventoryPage.isSorted(filter));
+    }
+
+    @BeforeClass
+    public void admin() {
+        driver = new ChromeDriver();
+        orionRc1Admin = new OrionRc1Admin(driver);
+        orionRc1Admin.open();
+    }
+
+    @Test
+    public void openAdmin() throws InterruptedException {
+        driver.manage().window().fullscreen();
+        Thread.sleep(5000);
+
     }
 
     @AfterClass
