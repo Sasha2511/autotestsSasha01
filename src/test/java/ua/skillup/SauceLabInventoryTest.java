@@ -40,25 +40,7 @@ public class SauceLabInventoryTest {
         assertTrue(inventoryPage.isSorted(filter));
     }
 
-    @BeforeClass
-    public void admin() {
-        driver = new ChromeDriver();
-        orionRc1Admin = new OrionRc1Admin(driver);
-        orionRc1Admin.open();
-    }
-
-    @Test
-    public void openAdmin() throws InterruptedException {
-        driver.manage().window().fullscreen();
-        Thread.sleep(5000);
-    }
-
-    @Test
-    public void onAdminPage() {
-        assertTrue(orionRc1Admin.isOnAdminPage());
-    }
-
-    @AfterClass
+    @AfterClass(enabled = false)
     public void tearDown() {
         driver.quit();
     }
