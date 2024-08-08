@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 
@@ -50,7 +51,11 @@ public class SauceLabInventoryTest {
     public void openAdmin() throws InterruptedException {
         driver.manage().window().fullscreen();
         Thread.sleep(5000);
+    }
 
+    @Test
+    public void onAdminPage() {
+        assertTrue(orionRc1Admin.isOnAdminPage());
     }
 
     @AfterClass
