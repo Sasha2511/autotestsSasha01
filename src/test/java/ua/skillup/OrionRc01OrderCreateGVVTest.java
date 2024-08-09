@@ -1,5 +1,6 @@
 package ua.skillup;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -9,15 +10,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class OrionRc1OrderGVV {
+public class OrionRc01OrderCreateGVVTest {
+
     WebDriver driver;
-    OrionRc1Admin orionRc1Admin;
+    OrionRc1CreateOrder orionRc1CreateOrder;
 
     @BeforeClass
     public void admin() {
         driver = new ChromeDriver();
-        orionRc1Admin = new OrionRc1Admin(driver);
-        orionRc1Admin.open();
+        orionRc1CreateOrder = new OrionRc1CreateOrder(driver);
+        orionRc1CreateOrder.open();
     }
 
     @Test
@@ -27,13 +29,13 @@ public class OrionRc1OrderGVV {
     }
 
     @Test
-    public void onOrderPage() {
-        assertTrue(orionRc1Admin.isOnOrderPage());
+    public void onNewOrderPage() {
+        assertTrue(orionRc1CreateOrder.isOnNewOrderPage());
     }
 
     @Test
-    public void clickCreateButton() {
-        orionRc1Admin.clickCreateButton();
+    public void isGVVIsSet() {
+        assertTrue(orionRc1CreateOrder.isGVVSelected());
     }
 
     @AfterClass
