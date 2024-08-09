@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertFalse;
@@ -22,14 +21,19 @@ public class OrionRc1OrderGVV {
     }
 
     @Test
-    public void openAdmin() throws InterruptedException {
+    public void openOrder() throws InterruptedException {
         driver.manage().window().fullscreen();
         Thread.sleep(5000);
     }
 
     @Test
-    public void onAdminPage() {
-        assertTrue(orionRc1Admin.isOnAdminPage());
+    public void onOrderPage() {
+        assertTrue(orionRc1Admin.isOnOrderPage());
+    }
+
+    @Test
+    public void clickCreateButton() {
+        orionRc1Admin.clickCreateButton();
     }
 
     @AfterClass
