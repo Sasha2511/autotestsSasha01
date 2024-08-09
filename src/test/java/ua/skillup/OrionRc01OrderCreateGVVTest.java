@@ -23,7 +23,7 @@ public class OrionRc01OrderCreateGVVTest {
     @Test
     public void openOrder() throws InterruptedException {
         driver.manage().window().fullscreen();
-        Thread.sleep(5000);
+        Thread.sleep(2500);
     }
 
     @Test
@@ -34,6 +34,12 @@ public class OrionRc01OrderCreateGVVTest {
     @Test
     public void isGVVIsSet() {
         assertTrue(orionRc1CreateOrder.isGVVSelected());
+    }
+
+    @Test
+    public void setParameters() throws InterruptedException {
+        orionRc1CreateOrder.setOrderParameters(3,2,"2024-11-20","2024-11-27");
+        Thread.sleep(2500);
     }
 
     @AfterClass

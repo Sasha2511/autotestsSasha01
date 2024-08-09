@@ -12,6 +12,12 @@ import java.util.List;
 public class OrionRc1CreateOrder {
     private final By NEW_ORDER_TITLE = By.xpath("//span[contains(text(), 'New Order')]");
     private final By BRAND_SELECTOR = By.xpath("//select[@name='brandId']");
+    private final By ADULTS_QUANTITY = By.xpath("//input[@name='adultsCount']");
+    private final By CHILDREN_QUANTITY = By.xpath("//input[@name='childrenCount']");
+    private final By START_DATE = By.xpath("//input[@name='startDate']");
+    private final By END_DATE = By.xpath("//input[@name='endDate']");
+    private final By CREATE_BUTTON = By.xpath("//button[@class='btn btn-primary']");
+
     private final WebDriver driver;
 
     public OrionRc1CreateOrder(WebDriver driver) {
@@ -35,6 +41,20 @@ public class OrionRc1CreateOrder {
         String actualSelectedValue = select.getFirstSelectedOption().getText();
         String expectedSelectedValue = "GVV";
         return actualSelectedValue.equals(expectedSelectedValue);
+    }
+
+    public void setOrderParameters(Integer adults, Integer children, String startDate, String endDate) {
+        WebElement adultsQuantity = driver.findElement(ADULTS_QUANTITY);
+        WebElement childrenQuantity = driver.findElement(CHILDREN_QUANTITY);
+        WebElement startDateInput = driver.findElement(START_DATE);
+        WebElement endDateInput = driver.findElement(END_DATE);
+        WebElement createButton = driver.findElement(CREATE_BUTTON);
+
+        adultsQuantity.sendKeys(adults.toString());
+        childrenQuantity.sendKeys(children.toString());
+        startDateInput.sendKeys(startDate);
+        endDateInput.sendKeys(endDate);
+        createButton.click();
     }
 
 }
