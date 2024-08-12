@@ -15,6 +15,14 @@ public class OrionRc1OrderPage {
     private final By ITINERARY_TAB = By.xpath("//a[contains(text(),'Itinerary')]");
     private final WebDriver driver;
 
+    private final Object[][] TRAVELERS = {
+            {1, "Tom", "Seaver", "01 Jan 1981", 1},
+            {2, "Emma", "Seaver", "01 Jan 1982", 2},
+            {1, "David", "Seaver", "01 Jan 1983", 1},
+            {2, "Sofy", "Seaver", "01 Jan 2016", 2},
+            {1, "David", "Seaver", "01 Jan 2017", 1},
+    };
+
     public OrionRc1OrderPage(WebDriver driver) {
         this.driver = driver;
     }
