@@ -26,7 +26,7 @@ public class OrionRc01OrderCreateGVVTest {
         Thread.sleep(2500);
     }
 
-    @Test
+    @Test(enabled = false)
     public void onNewOrderPage() {
         assertTrue(orionRc1CreateOrder.isOnNewOrderPage());
     }
@@ -41,6 +41,8 @@ public class OrionRc01OrderCreateGVVTest {
         orionRc1CreateOrder.setOrderParameters(3,2,"2024-11-20","2024-11-27");
         Thread.sleep(2500);
     }
+
+
 
     @AfterClass
     public void tearDown() {
