@@ -51,6 +51,7 @@ public class OrionRc1OrderPage {
         final By FIRST_TRAVELER_PREFIX = By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--prefix']");
 
         By traveler_PREFIX;
+        //some changes
         By traveler_NAME;
         By traveler_LASTNAME;
         By traveler_DOB;
