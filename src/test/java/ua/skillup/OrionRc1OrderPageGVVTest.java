@@ -29,7 +29,7 @@ public class OrionRc1OrderPageGVVTest {
     @Test
     public void setTravelers() throws InterruptedException {
         orionRc1OrderPage.setTravelers();
-        Thread.sleep(2500);
+        Thread.sleep(5000);
     }
 
 

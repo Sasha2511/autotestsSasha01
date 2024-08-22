@@ -17,7 +17,7 @@ public class OrionRc1OrderPage {
             {2, "Emma", "Seaver", "01 Jan 1982", 1},
             {1, "David", "Seaver", "01 Jan 1983", 0},
             {2, "Sofy", "Seaver", "01 Jan 2016", 1},
-            {1, "David", "Seaver", "01 Jan 2017", 0},
+            {1, "Garry", "Seaver", "01 Jan 2017", 0},
     };
 
     public OrionRc1OrderPage(WebDriver driver) {
@@ -45,6 +45,7 @@ public class OrionRc1OrderPage {
     public void setTravelers() {
 
         final By FIRST_TRAVELER_PREFIX = By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--prefix']");
+        final By BUTTON_SAVE_TRAVELLERS = By.xpath("//button[text()='Save Travelers']");
         By traveler_PREFIX; //= By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--prefix']");;
         //some changes
         By traveler_NAME; //= By.xpath("//tbody/tr[1]//input[@class='form-control traveler__name-input']");
@@ -75,6 +76,8 @@ public class OrionRc1OrderPage {
 
 
             WebElement inputNameField = driver.findElement(traveler_NAME);
+            inputNameField.sendKeys(Keys.CONTROL + "a");
+            inputNameField.sendKeys(Keys.DELETE);
             inputNameField.sendKeys((String) TRAVELERS[i][1]);
 
             WebElement inputLastNameField = driver.findElement(traveler_LASTNAME);
@@ -92,8 +95,8 @@ public class OrionRc1OrderPage {
             selectGender.selectByIndex((int) TRAVELERS[i][4]);
         }
 
-
-
+        WebElement saveTravelersButton = driver.findElement(BUTTON_SAVE_TRAVELLERS);
+        saveTravelersButton.click();
 
     }
 }
