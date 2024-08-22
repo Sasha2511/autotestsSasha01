@@ -1,10 +1,6 @@
 package ua.skillup;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v124.input.Input;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,7 +26,7 @@ public class OrionRc1OrderPage {
 
     public void open() {
         driver.get("http://secret:tsdebug@rc1-orion.test.greatvaluevacations.com/admin/");
-        driver.manage().addCookie(new Cookie.Builder("orion_rc_1_session", "eyJpdiI6IlpDMEVYbVNKZDR1by80bEhXSEpxa1E9PSIsInZhbHVlIjoiTGFJeTBSWDJjelk5SSt5RzVibzByMkNsc2FDUk1lQUhISlF0UGt1c0RlZEoxUGszNlg4WG9sMFlGZ0tQTzFqN3RMK2hPRkZ6eFRERUhoOFVwZFJDMDNiVm5FUUR1akFnY3R1RzFmVkpmd2FqdGdvRk4yajhIZVpsYkQvd1NVd1EiLCJtYWMiOiJjNGQ3YzAyM2RhZjJjYmJkZmU4Y2U0OThmMzcyYzdlMmIyMDdhY2Q3ODI5YjcyNjhjNjE3YTQ2N2JhYmM1ZWZiIiwidGFnIjoiIn0%3D").build());
+        driver.manage().addCookie(new Cookie.Builder("orion_rc_1_session", "eyJpdiI6ImRkS1FYT21YcmVIV0lYQ1JSOElvdVE9PSIsInZhbHVlIjoiWjY3ZDlFY01xS0ZkRURTOVRlazMzM25KQXJUM0dLWXQzbms1ZU9iNS9kK1hRbVFTanQ4Z3NYVzNTQTg0WW5tZXJtcjZtZmNVTUZEMDFiVllmZWJZQTFiMm1jcDNmc3VmVmQwRjg2RngwQ01SRnRGcFhEOTNIN1JCY1dxTUF5OUMiLCJtYWMiOiJmNjg5YmU3OWE2NzRiMTg4ZWQ4MGM3N2RkNDY3ZDlmZTRmOWQ2MzZmMDI4OTk0YWEyNDFiZjk0Y2RjMGRmZWYwIiwidGFnIjoiIn0%3D").build());
         driver.get("http://rc1-orion.test.greatvaluevacations.com/admin/order/DEVG315#summary");
     }
 
@@ -49,39 +45,55 @@ public class OrionRc1OrderPage {
     public void setTravelers() {
 
         final By FIRST_TRAVELER_PREFIX = By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--prefix']");
-
-        By traveler_PREFIX;
+        By traveler_PREFIX; //= By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--prefix']");;
         //some changes
-        By traveler_NAME;
-        By traveler_LASTNAME;
-        By traveler_DOB;
-        By traveler_GENDER;
+        By traveler_NAME; //= By.xpath("//tbody/tr[1]//input[@class='form-control traveler__name-input']");
+        By traveler_LASTNAME; //= By.xpath("//tbody/tr[1]/td[5]/input[@class='form-control traveler__name-input']");
+        By traveler_DOB; //= By.xpath("//tbody/tr[1]//div[@class='traveler__dob-input']//input");
+        By traveler_GENDER;// = By.xpath("//tbody/tr[1]//select[@class='custom-select traveler__select traveler__select--gender']");
 
         WebElement travelersTab = driver.findElement(TRAVELERS_TAB);
         travelersTab.click();
 
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement firstTravelerPrefixDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(FIRST_TRAVELER_PREFIX));
-        Select firstTravelerPrefix = new Select(firstTravelerPrefixDropdown);
-
-        firstTravelerPrefix.selectByIndex(2);
-
-     /*   for (int i=0; i<=4; i++) {
-            String[] line =  getTravelerXpathByLine(i+1);
-            traveler_PREFIX = By.xpath(line[0]);
-            traveler_NAME = By.xpath(line[1]);
 
 
-            Select travelerPrefix = new Select((WebElement) traveler_PREFIX);
-           // WebElement inputName = driver.findElement(traveler_NAME);
+        for (int i=0; i<=4; i++) {
+            String[] row =  getTravelerXpathByLine(i+1);
+            traveler_PREFIX = By.xpath(row[0]);
+            traveler_NAME = By.xpath(row[1]);
+            traveler_LASTNAME = By.xpath(row[2]);
+            traveler_DOB = By.xpath(row[3]);
+            traveler_GENDER = By.xpath(row[4]);
 
+            WebElement dropdownPrefix = driver.findElement(traveler_PREFIX);
+            Select travelerPrefix = new Select(dropdownPrefix);
             travelerPrefix.selectByIndex((int) TRAVELERS[i][0]);
-            //inputName.sendKeys((String) TRAVELERS[i][1]);
+
+
+            WebElement inputNameField = driver.findElement(traveler_NAME);
+            inputNameField.sendKeys((String) TRAVELERS[i][1]);
+
+            WebElement inputLastNameField = driver.findElement(traveler_LASTNAME);
+            inputLastNameField.sendKeys(Keys.CONTROL + "a");
+            inputLastNameField.sendKeys(Keys.DELETE);
+            inputLastNameField.sendKeys((String) TRAVELERS[i][2]);
+
+            WebElement inputDOB = driver.findElement(traveler_DOB);
+            inputDOB.sendKeys(Keys.CONTROL + "a");
+            inputDOB.sendKeys(Keys.DELETE);
+            inputDOB.sendKeys((String) TRAVELERS[i][3]);
+
+            WebElement dropdownGender = driver.findElement(traveler_GENDER);
+            Select selectGender = new Select(dropdownGender);
+            selectGender.selectByIndex((int) TRAVELERS[i][4]);
         }
 
 
-      */
+
 
     }
 }
