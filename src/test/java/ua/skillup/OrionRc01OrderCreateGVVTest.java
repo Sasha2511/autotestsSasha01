@@ -12,6 +12,7 @@ public class OrionRc01OrderCreateGVVTest {
 
     WebDriver driver;
     OrionRc1CreateOrder orionRc1CreateOrder;
+    OrionRc1OrderPage orionRc1OrderPage;
 
     @BeforeClass
     public void admin() {
@@ -42,7 +43,12 @@ public class OrionRc01OrderCreateGVVTest {
         Thread.sleep(2500);
     }
 
-
+    @Test
+    public void setTravelers() throws InterruptedException {
+        orionRc1OrderPage = new OrionRc1OrderPage(driver);
+        orionRc1OrderPage.setTravelers();
+        Thread.sleep(5000);
+    }
 
     @AfterClass
     public void tearDown() {
