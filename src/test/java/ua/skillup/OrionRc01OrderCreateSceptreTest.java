@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class OrionRc01OrderCreateGVVTest {
+public class OrionRc01OrderCreateSceptreTest {
 
     WebDriver driver;
     OrionRc1CreateOrder orionRc1CreateOrder;
@@ -39,16 +39,16 @@ public class OrionRc01OrderCreateGVVTest {
 
     @Test
     public void setParameters() throws InterruptedException {
-        orionRc1CreateOrder.setOrderParameters(3,2,"2024-12-10","2024-12-20");
+        orionRc1CreateOrder.setOrderParameters(4,0,"2024-12-10","2024-12-20", "Sasha Sasharc1", 2);
         Thread.sleep(2500);
     }
 
-    @Test
-    public void setTravelers() throws InterruptedException {
-        orionRc1OrderPage = new OrionRc1OrderPage(driver);
-        orionRc1OrderPage.setTravelers();
-        Thread.sleep(5000);
-    }
+//    @Test
+//    public void setTravelers() throws InterruptedException {
+//        orionRc1OrderPage = new OrionRc1OrderPage(driver);
+//        orionRc1OrderPage.setTravelers();
+//        Thread.sleep(5000);
+//    }
 
     @AfterClass
     public void tearDown() {
